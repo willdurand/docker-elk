@@ -23,8 +23,6 @@ ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearc
 # Logstash
 RUN apt-get install -y logstash
 
-ADD etc/logstash/patterns /etc/logstash/patterns
-ADD etc/logstash.conf /etc/logstash.conf
 ADD etc/supervisor/conf.d/logstash.conf /etc/supervisor/conf.d/logstash.conf
 
 # Kibana
