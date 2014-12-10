@@ -15,7 +15,16 @@ docker run -p 8080:80 \
 Then, browse: [http://localhost:8080](http://localhost:8080) (replace
 `localhost` with your public IP address).
 
-Your configuration directory MUST contain a `logstash.conf` file.
+Your logstash configuration directory MUST contain a `logstash.conf` file.
+
+Data
+----
+
+Elasticsearch data are located in the `/srv/data` directory. It is probably a
+good idea to mount a volume in order to preserve data integrity.
+
+If you want to rely on the logstash agent for processing files, you have to
+mount volumes as well.
 
 Logging
 -------
