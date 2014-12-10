@@ -7,7 +7,7 @@ Usage
 -----
 
 ```
-docker run -p 8080:80 \
+$ docker run -p 8080:80 \
     -v /path/to/your/logstash/config:/etc/logstash \
     willdurand/elk
 ```
@@ -21,7 +21,21 @@ Data
 ----
 
 Elasticsearch data are located in the `/srv/data` directory. It is probably a
-good idea to mount a volume in order to preserve data integrity.
+good idea to mount a volume in order to preserve data integrity. You can create
+a _data only container_:
+
+```
+$ docker run -d -v /srv/data --name dataelk busybox
+```
+
+Then, use it:
+
+```
+$ docker run -p 8080:80 \
+    -v /path/to/your/logstash/config:/etc/logstash \
+    --volumes-from dataelk \
+    willdurand/elk
+```
 
 If you want to rely on the logstash agent for processing files, you have to
 mount volumes as well.
