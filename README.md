@@ -15,6 +15,7 @@ docker run -p 8080:80 \
 Then, browse: [http://localhost:8080](http://localhost:8080) (replace
 `localhost` with your public IP address).
 
+Your configuration directory MUST contain a `logstash.conf` file.
 
 Logging
 -------
