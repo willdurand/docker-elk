@@ -17,6 +17,17 @@ Then, browse: [http://localhost:8080](http://localhost:8080) (replace
 
 Your logstash configuration directory MUST contain a `logstash.conf` file.
 
+### Fig Configuration
+
+``` yaml
+elk:
+  image: willdurand/elk
+  ports:
+    - "8080:80"
+  volumes:
+    - /path/to/your/logstash/config:/etc/logstash
+```
+
 Data
 ----
 
@@ -40,10 +51,24 @@ $ docker run -p 8080:80 \
 If you want to rely on the logstash agent for processing files, you have to
 mount volumes as well.
 
+### Fig Configuration
+
+``` yaml
+elk:
+  image: willdurand/elk
+  ports:
+    - "8080:80"
+  volumes:
+    - /path/to/your/logstash/config:/etc/logstash
+  volumes_from:
+    - dataelk
+```
+
 Logging
 -------
 
-Logs are directly written into the container:
+Logs are directly written into the container, but those directories are declared
+as volumes:
 
 * Elasticsearch: `/var/log/elasticsearch`
 * Logstash: `/var/log/logstash`

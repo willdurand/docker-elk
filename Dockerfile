@@ -40,6 +40,8 @@ RUN sed -i 's/"http:\/\/"+window.location.hostname+":9200"/"http:\/\/"+window.lo
 ADD etc/supervisor/conf.d/nginx.conf /etc/supervisor/conf.d/nginx.conf
 ADD etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
 
+VOLUME [ "/var/log/elasticsearch", "/var/log/logstash", "/var/log/nginx" ]
+
 EXPOSE 80
 
 CMD [ "/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf" ]
