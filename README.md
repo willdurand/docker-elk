@@ -28,6 +28,7 @@ elk:
     - /path/to/your/logstash/config:/etc/logstash
 ```
 
+
 Data
 ----
 
@@ -62,7 +63,13 @@ elk:
     - /path/to/your/logstash/config:/etc/logstash
   volumes_from:
     - dataelk
+
+dataelk:
+  image: busybox
+  volumes:
+    - /srv/data
 ```
+
 
 Logging
 -------
@@ -73,3 +80,44 @@ as volumes:
 * Elasticsearch: `/var/log/elasticsearch`
 * Logstash: `/var/log/logstash`
 * Nginx: `/var/log/nginx`
+
+
+Real Life Use Case
+------------------
+
+You can use this image to run an ELK stack that receives logs from your
+production servers, using [Logstash
+Forwarder](https://github.com/willdurand/docker-logstash-forwarder):
+
+``` yaml
+elk:
+  image: willdurand/elk
+  ports:
+    - "80:80'
+    - "XX.XX.XX.XX:5043:5043"
+  volumes:
+    - /path/to/your/ssl/files:/etc/ssl
+    - /path/to/your/logstash/config:/etc/logstash
+  volumes_from:
+    - dataelk
+
+dataelk:
+  image: busybox
+  volumes:
+    - /srv/data
+```
+
+Note that the `5043` port is binded to a private IP address in this case, which
+is recommended. Kibana is publicly available though.
+
+Your `logstash` configuration SHOULD contain the following `input` definition:
+
+```
+input {
+  lumberjack {
+    port => 5043
+    ssl_certificate => "/etc/ssl/logstash-forwarder.crt"
+    ssl_key => "/etc/ssl/logstash-forwarder.key"
+  }
+}
+```
