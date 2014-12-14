@@ -16,7 +16,7 @@ RUN \
 RUN \
 	apt-get install -y elasticsearch && \
     sed -i '/#cluster.name:.*/a cluster.name: logstash' /etc/elasticsearch/elasticsearch.yml && \
-    sed -i '/#path.data: \/path\/to\/data/a path.data: /data/es' /etc/elasticsearch/elasticsearch.yml
+    sed -i '/#path.data: \/path\/to\/data/a path.data: /data' /etc/elasticsearch/elasticsearch.yml
 
 ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearch.conf
 
@@ -40,8 +40,7 @@ RUN sed -i 's/"http:\/\/"+window.location.hostname+":9200"/"http:\/\/"+window.lo
 ADD etc/supervisor/conf.d/nginx.conf /etc/supervisor/conf.d/nginx.conf
 ADD etc/nginx/sites-enabled/default /etc/nginx/sites-enabled/default
 
-VOLUME [ "/data/es" ]
-VOLUME [ "/var/log/elasticsearch", "/var/log/logstash", "/var/log/nginx" ]
+VOLUME [ "/data" ]
 
 EXPOSE 80
 

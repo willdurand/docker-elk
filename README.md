@@ -3,8 +3,8 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
-Usage
------
+Quick Start
+-----------
 
 ```
 $ docker run -p 8080:80 \
@@ -32,12 +32,12 @@ elk:
 Data
 ----
 
-Elasticsearch data are located in the `/data/es` directory. It is probably a
-good idea to mount a volume in order to preserve data integrity. You can create
-a _data only container_:
+Elasticsearch data are located in the `/data` folder. It is probably a good idea
+to mount a volume in order to preserve data integrity. You can create a _data
+only container_:
 
 ```
-$ docker run -d -v /data/es --name dataelk busybox
+$ docker run -d -v /data --name dataelk busybox
 ```
 
 Then, use it:
@@ -50,7 +50,7 @@ $ docker run -p 8080:80 \
 ```
 
 If you want to rely on the logstash agent for processing files, you have to
-mount volumes as well.
+mount volumes as well, but you should rather only send logs to this container.
 
 ### Fig Configuration
 
@@ -67,19 +67,8 @@ elk:
 dataelk:
   image: busybox
   volumes:
-    - /data/es
+    - /data
 ```
-
-
-Logging
--------
-
-Logs are directly written into the container, but those directories are declared
-as volumes:
-
-* Elasticsearch: `/var/log/elasticsearch`
-* Logstash: `/var/log/logstash`
-* Nginx: `/var/log/nginx`
 
 
 Real Life Use Case
@@ -104,7 +93,7 @@ elk:
 dataelk:
   image: busybox
   volumes:
-    - /data/es
+    - /data
 ```
 
 Note that the `5043` port is binded to a private IP address in this case, which
@@ -121,3 +110,11 @@ input {
   }
 }
 ```
+
+
+Extend It
+---------
+
+One of the Docker best practices is to avoid mapping a host folder to a
+container volume. Instead of specifying a volume, it is recommended to use this
+image as base image and configure your own image.
