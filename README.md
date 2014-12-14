@@ -32,12 +32,12 @@ elk:
 Data
 ----
 
-Elasticsearch data are located in the `/srv/data` directory. It is probably a
+Elasticsearch data are located in the `/data/es` directory. It is probably a
 good idea to mount a volume in order to preserve data integrity. You can create
 a _data only container_:
 
 ```
-$ docker run -d -v /srv/data --name dataelk busybox
+$ docker run -d -v /data/es --name dataelk busybox
 ```
 
 Then, use it:
@@ -67,7 +67,7 @@ elk:
 dataelk:
   image: busybox
   volumes:
-    - /srv/data
+    - /data/es
 ```
 
 
@@ -104,7 +104,7 @@ elk:
 dataelk:
   image: busybox
   volumes:
-    - /srv/data
+    - /data/es
 ```
 
 Note that the `5043` port is binded to a private IP address in this case, which
