@@ -3,6 +3,11 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
+**Important:** this image embeds Kibana 4 beta 3. If you want to use Kibana
+3.1.0, you should rather use the
+[`kibana-3.1.0`](https://github.com/willdurand/docker-elk/tree/kibana-3.1.0)
+branch and its corresponding Docker tag.
+
 Quick Start
 -----------
 
@@ -82,7 +87,7 @@ Forwarder](https://github.com/willdurand/docker-logstash-forwarder):
 elk:
   image: willdurand/elk
   ports:
-    - "80:80'
+    - "80:80"
     - "XX.XX.XX.XX:5043:5043"
   volumes:
     - /path/to/your/ssl/files:/etc/ssl
