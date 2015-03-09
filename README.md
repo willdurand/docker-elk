@@ -20,7 +20,7 @@ $ docker run -p 8080:80 \
 Then, browse: [http://localhost:8080](http://localhost:8080) (replace
 `localhost` with your public IP address).
 
-Your logstash configuration directory MUST contain a `logstash.conf` file.
+Your logstash configuration directory MUST contain at least one logstash configuration file. If several files are found in the configuration directory, logstash will use all of them, concatenated in lexicographical order, as the configuration.
 
 ### Fig Configuration
 
