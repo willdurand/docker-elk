@@ -22,7 +22,7 @@ RUN \
 ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearch.conf
 
 # Logstash
-RUN apt-get install -y logstash && \
+RUN apt-get install -y logstash logstash-contrib && \
     apt-get clean
 
 ADD etc/supervisor/conf.d/logstash.conf /etc/supervisor/conf.d/logstash.conf
