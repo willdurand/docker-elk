@@ -22,7 +22,7 @@ Then, browse: [http://localhost:8080](http://localhost:8080) (replace
 
 Your logstash configuration directory MUST contain at least one logstash configuration file. If several files are found in the configuration directory, logstash will use all of them, concatenated in lexicographical order, as the configuration.
 
-### Fig Configuration
+### Compose Configuration
 
 ``` yaml
 elk:
@@ -57,7 +57,7 @@ $ docker run -p 8080:80 \
 If you want to rely on the logstash agent for processing files, you have to
 mount volumes as well, but you should rather only send logs to this container.
 
-### Fig Configuration
+### Compose Configuration
 
 ``` yaml
 elk:
