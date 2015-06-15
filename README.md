@@ -3,7 +3,7 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
-**Important:** this image embeds Kibana 4.0. If you want to use Kibana
+**Important:** this image embeds Kibana 4.1.0. If you want to use Kibana
 3.1.0, you should rather use the
 [`kibana-3.1.0`](https://github.com/willdurand/docker-elk/tree/kibana-3.1.0)
 branch and its corresponding Docker tag.
