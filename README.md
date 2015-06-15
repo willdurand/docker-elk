@@ -23,11 +23,11 @@ Your logstash configuration directory MUST contain at least one logstash configu
 
 ``` yaml
 elk:
-  image: willdurand/elk
-  ports:
-    - "8080:80"
-  volumes:
-    - /path/to/your/logstash/config:/etc/logstash
+    image: willdurand/elk
+    ports:
+        - "8080:80"
+    volumes:
+        - /path/to/your/logstash/config:/etc/logstash
 ```
 
 
@@ -58,18 +58,18 @@ mount volumes as well, but you should rather only send logs to this container.
 
 ``` yaml
 elk:
-  image: willdurand/elk
-  ports:
-    - "8080:80"
-  volumes:
-    - /path/to/your/logstash/config:/etc/logstash
-  volumes_from:
-    - dataelk
+    image: willdurand/elk
+    ports:
+        - "8080:80"
+    volumes:
+        - /path/to/your/logstash/config:/etc/logstash
+    volumes_from:
+        - dataelk
 
 dataelk:
-  image: busybox
-  volumes:
-    - /data
+    image: busybox
+    volumes:
+        - /data
 ```
 
 
@@ -82,20 +82,20 @@ Forwarder](https://github.com/willdurand/docker-logstash-forwarder):
 
 ``` yaml
 elk:
-  image: willdurand/elk
-  ports:
-    - "80:80"
-    - "XX.XX.XX.XX:5043:5043"
-  volumes:
-    - /path/to/your/ssl/files:/etc/ssl
-    - /path/to/your/logstash/config:/etc/logstash
-  volumes_from:
-    - dataelk
+    image: willdurand/elk
+    ports:
+        - "80:80"
+        - "XX.XX.XX.XX:5043:5043"
+    volumes:
+        - /path/to/your/ssl/files:/etc/ssl
+        - /path/to/your/logstash/config:/etc/logstash
+    volumes_from:
+        - dataelk
 
 dataelk:
-  image: busybox
-  volumes:
-    - /data
+    image: busybox
+    volumes:
+        - /data
 ```
 
 Note that the `5043` port is binded to a private IP address in this case, which
