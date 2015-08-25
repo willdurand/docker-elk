@@ -4,7 +4,7 @@ MAINTAINER William Durand <william.durand1@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get install -y supervisor curl
+RUN apt-get install --no-install-recommends -y supervisor curl
 
 # Elasticsearch
 RUN \
@@ -14,7 +14,7 @@ RUN \
     apt-get update
 
 RUN \
-    apt-get install -y elasticsearch && \
+    apt-get install --no-install-recommends -y elasticsearch && \
     apt-get clean && \
     sed -i '/#cluster.name:.*/a cluster.name: logstash' /etc/elasticsearch/elasticsearch.yml && \
     sed -i '/#path.data: \/path\/to\/data/a path.data: /data' /etc/elasticsearch/elasticsearch.yml
@@ -22,7 +22,7 @@ RUN \
 ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearch.conf
 
 # Logstash
-RUN apt-get install -y logstash logstash-contrib && \
+RUN apt-get install --no-install-recommends -y logstash logstash-contrib && \
     apt-get clean
 
 ADD etc/supervisor/conf.d/logstash.conf /etc/supervisor/conf.d/logstash.conf
