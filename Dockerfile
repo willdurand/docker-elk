@@ -10,7 +10,7 @@ RUN apt-get install --no-install-recommends -y supervisor curl
 RUN \
     apt-key adv --keyserver pool.sks-keyservers.net --recv-keys 46095ACC8548582C1A2699A9D27D666CD88E42B4 && \
     if ! grep "elasticsearch" /etc/apt/sources.list; then echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
-    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elasticsearch.org/logstash/1.4/debian stable main" >> /etc/apt/sources.list;fi && \
+    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elasticsearch.org/logstash/1.5/debian stable main" >> /etc/apt/sources.list;fi && \
     apt-get update
 
 RUN \
@@ -22,10 +22,13 @@ RUN \
 ADD etc/supervisor/conf.d/elasticsearch.conf /etc/supervisor/conf.d/elasticsearch.conf
 
 # Logstash
-RUN apt-get install --no-install-recommends -y logstash logstash-contrib && \
+RUN apt-get install --no-install-recommends -y logstash && \
     apt-get clean
 
 ADD etc/supervisor/conf.d/logstash.conf /etc/supervisor/conf.d/logstash.conf
+
+# Logstash plugins
+RUN /opt/logstash/bin/plugin install logstash-filter-translate
 
 # Kibana
 RUN \
