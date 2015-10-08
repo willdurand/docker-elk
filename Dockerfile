@@ -32,8 +32,8 @@ RUN /opt/logstash/bin/plugin install logstash-filter-translate
 
 # Kibana
 RUN \
-    curl -s https://download.elasticsearch.org/kibana/kibana/kibana-4.1.0-linux-x64.tar.gz | tar -C /opt -xz && \
-    ln -s /opt/kibana-4.1.0-linux-x64 /opt/kibana && \
+    curl -s https://download.elasticsearch.org/kibana/kibana/kibana-4.1.2-linux-x64.tar.gz | tar -C /opt -xz && \
+    ln -s /opt/kibana-4.1.2-linux-x64 /opt/kibana && \
     sed -i 's/port: 5601/port: 80/' /opt/kibana/config/kibana.yml
 
 ADD etc/supervisor/conf.d/kibana.conf /etc/supervisor/conf.d/kibana.conf
