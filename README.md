@@ -3,7 +3,15 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
-**Important:** this image embeds Kibana 4.1.2.
+**Important:**
+
+* The `master` branch (image: `willdurand/elk:latest` or
+  `willdurand/elk:kibana-4.1.2`) currently contains an image with Kibana 4.1.2,
+  Elasticsearch 1.x, and Logstash 1.x;
+* Branch
+  [`kibana-4.4.2`](https://github.com/willdurand/docker-elk/tree/kibana-4.4.2)
+  (image: `willdurand/elk:kibana-4.4.2`) provides Kibana 4.4.2, Elasticsearch
+  2.X, and Logstash 2.x.
 
 Quick Start
 -----------
