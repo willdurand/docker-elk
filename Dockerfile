@@ -1,7 +1,7 @@
 FROM java:8
 MAINTAINER William Durand <william.durand1@gmail.com>
 
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y supervisor curl && \
