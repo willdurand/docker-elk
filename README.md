@@ -3,7 +3,7 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
-**Important:** this image embeds Elasticsearch 2.2, Logstash 2.2, and Kibana 4.4.2.
+**Important:** this image embeds Elasticsearch 2.3, Logstash 2.3, and Kibana 4.5.4.
 
 Quick Start
 -----------

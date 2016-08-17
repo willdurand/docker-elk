@@ -13,7 +13,7 @@ RUN \
     wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add - && \
     rm -f /etc/apt/sources.list.d/* && \
     if ! grep "elasticsearch" /etc/apt/sources.list; then echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" >> /etc/apt/sources.list;fi && \
-    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elastic.co/logstash/2.2/debian stable main" >> /etc/apt/sources.list;fi && \
+    if ! grep "logstash" /etc/apt/sources.list; then echo "deb http://packages.elastic.co/logstash/2.3/debian stable main" >> /etc/apt/sources.list;fi && \
     apt-get update && \
     apt-get install --no-install-recommends -y elasticsearch logstash && \
     apt-get clean && \
@@ -23,8 +23,8 @@ RUN \
 
 # Kibana
 RUN \
-    curl -s https://download.elasticsearch.org/kibana/kibana/kibana-4.4.2-linux-x64.tar.gz | tar -C /opt -xz && \
-    ln -s /opt/kibana-4.4.2-linux-x64 /opt/kibana && \
+    curl -s https://download.elasticsearch.org/kibana/kibana/kibana-4.5.4-linux-x64.tar.gz | tar -C /opt -xz && \
+    ln -s /opt/kibana-4.5.4-linux-x64 /opt/kibana && \
     sed -i 's/# server\.port: 5601/server.port: 80/' /opt/kibana/config/kibana.yml
 
 # Logstash plugins
