@@ -3,14 +3,14 @@ Elasticsearch. Logstash. Kibana.
 
 Creating an ELK stack could not be easier.
 
-**Important:** this image embeds Elasticsearch 2.3, Logstash 2.3, and Kibana 4.5.4.
+**Important:** this image embeds Elasticsearch 5.0, Logstash 5.0, and Kibana 5.0.
 
 Quick Start
 -----------
 
 ```
 $ docker run -p 8080:80 \
-    -v /path/to/your/logstash/config:/etc/logstash \
+    -v /path/to/your/logstash/config:/etc/logstash/conf.d \
     willdurand/elk
 ```
 
