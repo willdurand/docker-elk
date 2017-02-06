@@ -17,9 +17,9 @@ Creating an ELK stack could not be easier.
   (image: `willdurand/elk:kibana-4.5.4`) provides Kibana 4.5.4, Elasticsearch
   2.3, and Logstash 2.3;
 * Branch
-  [`kibana-5.0.0`](https://github.com/willdurand/docker-elk/tree/kibana-5.0.0)
-  (image: `willdurand/elk:kibana-5.0.0`) provides Kibana 5.0.0, Elasticsearch
-  5.0.0, and Logstash 5.0.0.
+  [`kibana-5.x`](https://github.com/willdurand/docker-elk/tree/kibana-5.x)
+  (image: `willdurand/elk:kibana-5.x`) provides Kibana 5.x, Elasticsearch
+  5.x, and Logstash 5.x.
 
 
 Quick Start
