@@ -2,6 +2,7 @@ FROM java:8
 MAINTAINER William Durand <william.durand1@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV ES_SKIP_SET_KERNEL_PARAMETERS true
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y supervisor wget apt-transport-https && \
